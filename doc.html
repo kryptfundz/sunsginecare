@@ -1,0 +1,1294 @@
+# **MediCare Hospital Management System - Comprehensive Documentation**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Hospital Management System - Comprehensive Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #4CAF50;
+            --accent: #FF9800;
+            --danger: #f44336;
+            --warning: #ff9800;
+            --info: #2196F3;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border: #dee2e6;
+            --success: #28a745;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .toc-container {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .toc-title {
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .toc-title i {
+            color: var(--primary);
+        }
+        
+        .toc-list {
+            list-style: none;
+            columns: 2;
+            column-gap: 30px;
+        }
+        
+        .toc-list li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .toc-list li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        
+        .toc-list li:hover {
+            transform: translateX(5px);
+            color: var(--primary);
+        }
+        
+        .content-section {
+            padding: 30px;
+            margin: 0 30px 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .section-header h2 {
+            color: var(--dark);
+            font-size: 1.8rem;
+        }
+        
+        .section-header i {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        h3 {
+            color: var(--dark);
+            margin: 20px 0 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: var(--gray);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--light);
+        }
+        
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(26, 115, 232, 0.15);
+        }
+        
+        .feature-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .feature-title i {
+            background: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .note, .warning {
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid;
+        }
+        
+        .note {
+            background: #e3f2fd;
+            border-left-color: var(--info);
+            color: #0d47a1;
+        }
+        
+        .warning {
+            background: #ffebee;
+            border-left-color: var(--danger);
+            color: #b71c1c;
+        }
+        
+        .note h4, .warning h4 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .note h4 i {
+            color: var(--info);
+        }
+        
+        .warning h4 i {
+            color: var(--danger);
+        }
+        
+        code {
+            background: var(--light);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+        
+        pre {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        
+        .credentials-table {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .credentials-table th {
+            background: var(--dark);
+        }
+        
+        .credentials-table td {
+            font-weight: 600;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 20px;
+            color: var(--gray);
+            border-top: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .role-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0 5px;
+        }
+        
+        @media (max-width: 992px) {
+            .toc-list {
+                columns: 1;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                border-radius: 15px;
+            }
+            
+            header {
+                padding: 30px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .content-section {
+                padding: 20px;
+                margin: 0 15px 20px;
+            }
+            
+            .toc-container {
+                padding: 20px;
+                margin: 20px 15px;
+            }
+        }
+        
+        .animated {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section-number {
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MediCare Hospital Management System (HMS)</h1>
+            <p class="subtitle">Comprehensive Documentation for Administrators, Staff, and Developers</p>
+        </header>
+        
+        <div class="toc-container animated">
+            <div class="toc-title">
+                <i class="fas fa-list"></i>
+                <h2>Table of Contents</h2>
+            </div>
+            <ul class="toc-list">
+                <li>1. Introduction</li>
+                <li>2. System Architecture</li>
+                <li>3. User Roles & Permissions</li>
+                <li>4. Core Modules</li>
+                <li>5. Emergency Response System</li>
+                <li>6. Security Features</li>
+                <li>7. Installation Guide</li>
+                <li>8. User Guides</li>
+                <li>9. API Documentation</li>
+                <li>10. Troubleshooting</li>
+                <li>11. Appendices</li>
+            </ul>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2>Introduction</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>1.1 Overview</h3>
+                </div>
+                <p>MediCare HMS is a comprehensive web-based hospital management system designed to streamline operations across clinical, administrative, and emergency services. Built with PHP 8.2, MariaDB 10.4+, and modern JavaScript, it supports multi-role workflows with real-time capabilities.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>1.2 Purpose</h3>
+                </div>
+                <ul>
+                    <li>Digitize patient records and billing</li>
+                    <li>Automate ambulance dispatch</li>
+                    <li>Enable lab test management</li>
+                    <li>Provide financial oversight</li>
+                    <li>Ensure HIPAA-compliant data handling</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>1.3 Scope</h3>
+                </div>
+                <p>Covers <span class="highlight">56 user roles</span> across 5 departments:</p>
+                <ul>
+                    <li><strong>Clinical</strong>: Doctors (<span class="role-tag">10 roles</span>), Nurses (<span class="role-tag">8 roles</span>)</li>
+                    <li><strong>Administrative</strong>: Accountants (<span class="role-tag">11 roles</span>), Pharmacists (<span class="role-tag">1 role</span>)</li>
+                    <li><strong>Support</strong>: Lab Technicians (<span class="role-tag">1 role</span>), Ambulance Dispatchers (<span class="role-tag">1 role</span>)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2>System Architecture</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-cogs"></i>
+                    <h3>2.1 Technical Stack</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Technology</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Frontend</strong></td>
+                            <td>HTML5, CSS3, JavaScript (ES6+), Chart.js</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Backend</strong></td>
+                            <td>PHP 8.2, PDO, Composer</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Database</strong></td>
+                            <td>MariaDB 10.4+</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Security</strong></td>
+                            <td>Password hashing (bcrypt), CSRF tokens, XSS filtering</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deployment</strong></td>
+                            <td>Apache/Nginx, XAMPP/LAMP</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-database"></i>
+                    <h3>2.2 Database Schema</h3>
+                </div>
+                <p>Key tables from <code>medicare_hms_db.txt</code>:</p>
+                <ul>
+                    <li><strong>Core</strong>: <code>users</code>, <code>patients</code>, <code>user_roles</code></li>
+                    <li><strong>Clinical</strong>: <code>appointments</code>, <code>prescriptions</code>, <code>medical_records</code></li>
+                    <li><strong>Financial</strong>: <code>bills</code>, <code>payments</code>, <code>expenses</code>, <code>audit_logs</code></li>
+                    <li><strong>Emergency</strong>: <code>ambulance_requests</code>, <code>emergency_requests</code>, <code>ambulance_units</code></li>
+                    <li><strong>Inventory</strong>: <code>medicines</code>, <code>medicine_inventory</code>, <code>lab_inventory</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>2.3 Security Architecture</h3>
+                </div>
+                <ul>
+                    <li><strong>Encryption</strong>: TLS 1.3 for data in transit</li>
+                    <li><strong>Storage</strong>: AES-256 for sensitive fields (e.g., <code>password_hash</code>)</li>
+                    <li><strong>Access Control</strong>: Role-based permissions via <code>user_roles.permissions</code></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2>User Roles & Permissions</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-users"></i>
+                    <h3>3.1 Role Matrix</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role Category</th>
+                            <th>Roles</th>
+                            <th>Key Permissions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Doctors</strong></td>
+                            <td>Attending Physician (<span class="role-tag">ID 1</span>)</td>
+                            <td>Create prescriptions, view medical records</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nurses</strong></td>
+                            <td>Registered Nurse (<span class="role-tag">ID 11</span>)</td>
+                            <td>Manage bed assignments, update patient vitals</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accountants</strong></td>
+                            <td>Medical Biller (<span class="role-tag">ID 41</span>)</td>
+                            <td>Generate bills, reconcile payments</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pharmacists</strong></td>
+                            <td>Pharmacist (<span class="role-tag">ID 20</span>)</td>
+                            <td>Dispense medicines, manage inventory</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Admin</strong></td>
+                            <td>Super Admin (<span class="role-tag">ID 1</span>)</td>
+                            <td>Full system access, user management</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-key"></i>
+                    <h3>3.2 Authentication Flow</h3>
+                </div>
+                <ol>
+                    <li>User enters credentials at <code>/staff/login.php</code></li>
+                    <li>System validates against <code>users</code> table:
+                        <pre>SELECT id, role_id, password_hash 
+FROM users 
+WHERE email = ? AND status = 'active'</pre>
+                    </li>
+                    <li>Password verified via <code>password_verify()</code></li>
+                    <li>Session initialized with:
+                        <pre>$_SESSION['user_id'] = $user['id'];
+$_SESSION['role_id'] = $user['role_id'];</pre>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-hourglass-half"></i>
+                    <h3>3.3 Session Management</h3>
+                </div>
+                <ul>
+                    <li><strong>Timeout</strong>: 3600 seconds (configurable in <code>system_settings</code>)</li>
+                    <li><strong>Regeneration</strong>: <code>session_regenerate_id(true)</code> on login</li>
+                    <li><strong>Validation</strong>: Checks <code>role_id</code> on every page load</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2>Core Modules</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-user-injured"></i>
+                    <h3>4.1 Patient Portal</h3>
+                </div>
+                <p><strong>Features</strong>:</p>
+                <ul>
+                    <li>Appointment scheduling</li>
+                    <li>Prescription refills</li>
+                    <li>Bill payment (Paystack integration)</li>
+                </ul>
+                <p><strong>Key Files</strong>:</p>
+                <ul>
+                    <li><code>patient/appointments.php</code></li>
+                    <li><code>patient/prescriptions.php</code></li>
+                    <li><code>patient/bills.php</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-user-md"></i>
+                    <h3>4.2 Doctor Dashboard</h3>
+                </div>
+                <p><strong>Features</strong>:</p>
+                <ul>
+                    <li>Patient transfer requests</li>
+                    <li>Blood bank management</li>
+                    <li>Medical record creation</li>
+                </ul>
+                <p><strong>Key Files</strong>:</p>
+                <ul>
+                    <li><code>staff/doctor/dashboard.php</code></li>
+                    <li><code>staff/doctor/patient_transfer.php</code></li>
+                    <li><code>staff/doctor/medical_records.php</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-user-nurse"></i>
+                    <h3>4.3 Nurse Management</h3>
+                </div>
+                <p><strong>Features</strong>:</p>
+                <ul>
+                    <li>Bed assignment tracking</li>
+                    <li>Vital signs logging (<code>health_metrics</code> table)</li>
+                    <li>Task management</li>
+                </ul>
+                <p><strong>Key Files</strong>:</p>
+                <ul>
+                    <li><code>staff/nurse/bed_assignments.php</code></li>
+                    <li><code>staff/nurse/patients.php</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h3>4.4 Accountant Suite</h3>
+                </div>
+                <p><strong>Features</strong>:</p>
+                <ul>
+                    <li><strong>Billing</strong>: Create/view bills (<code>bills</code> table)</li>
+                    <li><strong>Payments</strong>: Process payments (<code>payments</code> table)</li>
+                    <li><strong>Expenses</strong>: Track hospital expenses (<code>expenses</code> table)</li>
+                    <li><strong>Reconciliation</strong>: Match payments to bills (<code>payment_reconciliations</code> table)</li>
+                    <li><strong>Audit Logs</strong>: Monitor all financial actions (<code>audit_logs</code> table)</li>
+                </ul>
+                <p><strong>Key Files</strong>:</p>
+                <ul>
+                    <li><code>staff/accountant/billing.php</code></li>
+                    <li><code>staff/accountant/payment_reconciliation.php</code></li>
+                    <li><code>staff/accountant/audit_logs.php</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-pills"></i>
+                    <h3>4.5 Pharmacist Module</h3>
+                </div>
+                <p><strong>Features</strong>:</p>
+                <ul>
+                    <li>Medicine dispensing</li>
+                    <li>Inventory alerts (<code>back_in_stock_alerts</code> table)</li>
+                    <li>Online pharmacy (<code>medicine_orders</code> table)</li>
+                </ul>
+                <p><strong>Key Files</strong>:</p>
+                <ul>
+                    <li><code>staff/pharmacist/inventory.php</code></li>
+                    <li><code>staff/pharmacist/orders.php</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-flask"></i>
+                    <h3>4.6 Laboratory System</h3>
+                </div>
+                <p><strong>Features</strong>:</p>
+                <ul>
+                    <li>Test requests (<code>lab_requests</code> table)</li>
+                    <li>Result management (<code>lab_results</code> table)</li>
+                    <li>Equipment tracking (<code>lab_equipment</code> table)</li>
+                </ul>
+                <p><strong>Key Files</strong>:</p>
+                <ul>
+                    <li><code>staff/laboratorist/test_requests.php</code></li>
+                    <li><code>staff/laboratorist/results.php</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-ambulance"></i>
+                    <h3>4.7 Ambulance & Emergency Response</h3>
+                </div>
+                <p><strong>Features</strong>:</p>
+                <ul>
+                    <li>GPS-tracked ambulance dispatch</li>
+                    <li>Emergency panic button</li>
+                    <li>Pre-arrival hospital alerts</li>
+                </ul>
+                <p><strong>Key Files</strong>:</p>
+                <ul>
+                    <li><code>staff/dispatch/ambulance_dashboard.php</code></li>
+                    <li><code>patient/ambulance/ambulance_request.php</code></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2>Emergency Response System</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>5.1 Workflow</h3>
+                </div>
+                <ol>
+                    <li><strong>Trigger</strong>: Patient clicks panic button or calls emergency line</li>
+                    <li><strong>Request Creation</strong>:
+                        <pre>INSERT INTO emergency_requests (
+  requester_id, 
+  emergency_type, 
+  manual_address,
+  latitude,
+  longitude
+) VALUES (?, ?, ?, ?, ?);</pre>
+                    </li>
+                    <li><strong>Ambulance Dispatch</strong>:
+                        <ul>
+                            <li>System assigns nearest available unit (<code>ambulance_units.status = 'available'</code>)</li>
+                            <li>Updates <code>ambulance_requests.status = 'dispatched'</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Hospital Alert</strong>:
+                        <ul>
+                            <li>Notifies relevant department via <code>hospital_alert_status</code></li>
+                            <li>Pre-assigns beds if needed (<code>bed_requests</code> table)</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <div class "feature-title">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>5.2 Real-time Tracking</h3>
+                </div>
+                <ul>
+                    <li><strong>GPS Updates</strong>: Every 30 seconds via <code>ambulance_tracking</code> table</li>
+                    <li><strong>ETA Calculation</strong>:
+                        <pre>$eta_minutes = calculateDistance($current_lat, $current_lng, $incident_lat, $incident_lng) / 60;</pre>
+                    </li>
+                    <li><strong>Patient Notifications</strong>: SMS updates via Twilio API</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-plug"></i>
+                    <h3>5.3 Integration Points</h3>
+                </div>
+                <ul>
+                    <li><strong>Maps</strong>: Google Maps API for routing</li>
+                    <li><strong>SMS</strong>: Twilio for patient notifications</li>
+                    <li><strong>Hardware</strong>: IoT ambulance trackers</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <h2>Security Features</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-lock"></i>
+                    <h3>6.1 Data Protection</h3>
+                </div>
+                <ul>
+                    <li><strong>Passwords</strong>: <code>password_hash()</code> with <code>PASSWORD_DEFAULT</code></li>
+                    <li><strong>Sensitive Data</strong>:
+                        <ul>
+                            <li>Patient SSN/ID encrypted at rest</li>
+                            <li>Payment tokens via PCI-compliant gateways (Paystack)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Input Sanitization</strong>:
+                        <ul>
+                            <li><code>htmlspecialchars()</code> for output</li>
+                            <li>Prepared statements for all DB queries</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-history"></i>
+                    <h3>6.2 Audit Logging</h3>
+                </div>
+                <p><strong>Tracked Actions</strong>:</p>
+                <ul>
+                    <li>Financial transactions (<code>CREATE/UPDATE/DELETE</code> on <code>bills</code>, <code>payments</code>)</li>
+                    <li>Patient record access</li>
+                    <li>User role changes</li>
+                </ul>
+                <p><strong>Log Structure</strong> (<code>audit_logs</code> table):</p>
+                <pre>CREATE TABLE audit_logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  action VARCHAR(100) NOT NULL, -- e.g., 'CREATE', 'UPDATE'
+  table_affected VARCHAR(50) NOT NULL, -- e.g., 'bills'
+  record_id INT NOT NULL,
+  old_values JSON, -- Pre-change state
+  new_values JSON, -- Post-change state
+  ip_address VARCHAR(45),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);</pre>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-gavel"></i>
+                    <h3>6.3 Compliance</h3>
+                </div>
+                <ul>
+                    <li><strong>HIPAA</strong>:
+                        <ul>
+                            <li>Audit trails for PHI access</li>
+                            <li>Automatic session timeout</li>
+                        </ul>
+                    </li>
+                    <li><strong>PCI-DSS</strong>:
+                        <ul>
+                            <li>No card data stored</li>
+                            <li>Tokenized payments via Paystack</li>
+                        </ul>
+                    </li>
+                    <li><strong>GDPR</strong>:
+                        <ul>
+                            <li>Right to erasure (<code>patients.status = 'inactive'</code>)</li>
+                            <li>Data portability (export to PDF/Excel)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">7</div>
+                <h2>Installation Guide</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-server"></i>
+                    <h3>7.1 Prerequisites</h3>
+                </div>
+                <ul>
+                    <li><strong>Server</strong>: Apache 2.4+, PHP 8.2+, MariaDB 10.4+</li>
+                    <li><strong>Extensions</strong>: <code>pdo_mysql</code>, <code>gd</code>, <code>mbstring</code>, <code>json</code></li>
+                    <li><strong>Permissions</strong>: Write access to <code>/uploads</code>, <code>/logs</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-download"></i>
+                    <h3>7.2 Deployment Steps</h3>
+                </div>
+                <ol>
+                    <li><strong>Clone Repository</strong>:
+                        <pre>git clone https://github.com/your-repo/medicare-hms.git</pre>
+                    </li>
+                    <li><strong>Import Database</strong>:
+                        <pre>mysql -u root -p medicare_hms &lt; medicare_hms_db.txt</pre>
+                    </li>
+                    <li><strong>Configure Environment</strong>:
+                        <ul>
+                            <li>Update <code>includes/config.php</code>:
+                                <pre>define('BASE_URL', 'http://localhost/medicare');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'medicare_hms');
+define('DB_USER', 'root');
+define('DB_PASS', '');</pre>
+                        </ul>
+                    </li>
+                    <li><strong>Set Permissions</strong>:
+                        <pre>chmod -R 755 medicare/
+chmod -R 777 medicare/uploads/</pre>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-cog"></i>
+                    <h3>7.3 Configuration</h3>
+                </div>
+                <ul>
+                    <li><strong>System Settings</strong>: Edit via <code>super_admin/settings.php</code>
+                        <ul>
+                            <li>Currency: ₦ (Nigerian Naira)</li>
+                            <li>Timezone: Africa/Lagos</li>
+                            <li>Session timeout: 3600 seconds</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">8</div>
+                <h2>User Guides</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-user"></i>
+                    <h3>8.1 Patient Guide</h3>
+                </div>
+                <p><strong>Registration</strong>:</p>
+                <ol>
+                    <li>Visit <code>/patient/register.php</code></li>
+                    <li>Verify email via OTP</li>
+                </ol>
+                <p><strong>Booking Appointments</strong>:</p>
+                <ol>
+                    <li>Go to <code>Appointments > Schedule Appointment</code></li>
+                    <li>Select doctor and time slot</li>
+                </ol>
+                <p><strong>Paying Bills</strong>:</p>
+                <ol>
+                    <li>Navigate to <code>Bills & Payments > View Bills</code></li>
+                    <li>Click "Pay Now" → Complete Paystack flow</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-user-md"></i>
+                    <h3>8.2 Staff Guide</h3>
+                </div>
+                <p><strong>Doctor Workflow</strong>:</p>
+                <ol>
+                    <li>Check <code>My Appointments</code> dashboard</li>
+                    <li>Create prescriptions via <code>Prescriptions > Issue Prescription</code></li>
+                    <li>Transfer patients using <code>Bed Management > Bed Requests</code></li>
+                </ol>
+                <p><strong>Accountant Workflow</strong>:</p>
+                <ol>
+                    <li>Generate bills in <code>Billing > Create New Bill</code></li>
+                    <li>Reconcile payments in <code>Payment Reconciliation</code></li>
+                    <li>Audit logs in <code>Audit Logs</code> tab</li>
+                </ol>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-user-cog"></i>
+                    <h3>8.3 Admin Guide</h3>
+                </div>
+                <p><strong>User Management</strong>:</p>
+                <ol>
+                    <li>Go to <code>Super Admin > User Management</code></li>
+                    <li>Assign roles via dropdown</li>
+                </ol>
+                <p><strong>System Monitoring</strong>:</p>
+                <ul>
+                    <li>View real-time ambulance tracking</li>
+                    <li>Monitor server health in <code>Dashboard</code></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">9</div>
+                <h2>API Documentation</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-code"></i>
+                    <h3>9.1 Endpoints</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Endpoint</th>
+                            <th>Method</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>/api/patients</code></td>
+                            <td>GET</td>
+                            <td>List all patients</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/bills</code></td>
+                            <td>POST</td>
+                            <td>Create new bill</td>
+                        </tr>
+                        <tr>
+                            <td><code>/api/ambulance/track</code></td>
+                            <td>GET</td>
+                            <td>Get ambulance location</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-key"></i>
+                    <h3>9.2 Authentication</h3>
+                </div>
+                <ul>
+                    <li><strong>Header</strong>: <code>Authorization: Bearer &lt;session_token&gt;</code></li>
+                    <li><strong>Token Generation</strong>:
+                        <pre>$token = bin2hex(random_bytes(32));
+$_SESSION['api_token'] = $token;</pre>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>9.3 Error Handling</h3>
+                </div>
+                <p><strong>HTTP Codes</strong>:</p>
+                <ul>
+                    <li><code>401</code>: Unauthorized (invalid session)</li>
+                    <li><code>403</code>: Forbidden (insufficient permissions)</li>
+                    <li><code>400</code>: Bad Request (missing parameters)</li>
+                </ul>
+                <p><strong>Response Format</strong>:</p>
+                <pre>{
+  "error": "Invalid bill ID",
+  "code": 400
+}</pre>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2>Troubleshooting</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-bug"></i>
+                    <h3>10.1 Common Issues</h3>
+                </div>
+                <p><strong>Login Failures</strong>:</p>
+                <ul>
+                    <li>Verify <code>users.status = 'active'</code></li>
+                    <li>Check password hashing algorithm</li>
+                </ul>
+                <p><strong>PDF Generation Errors</strong>:</p>
+                <ul>
+                    <li>Install TCPDF library in <code>/vendor/tecnickcom/tcpdf/</code></li>
+                </ul>
+                <p><strong>Map Not Loading</strong>:</p>
+                <ul>
+                    <li>Add Google Maps API key in <code>system_settings</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>10.2 Log Analysis</h3>
+                </div>
+                <p><strong>Location</strong>: <code>/logs/error.log</code></p>
+                <p><strong>Key Entries</strong>:</p>
+                <pre>[2025-12-28 14:30:22] ERROR: SQLSTATE[42S22] - Column not found
+[2025-12-28 14:31:05] WARNING: Session timeout for user_id=5</pre>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-headset"></i>
+                    <h3>10.3 Support</h3>
+                </div>
+                <ul>
+                    <li><strong>Contact</strong>: support@medicare.com</li>
+                    <li><strong>Emergency Hotline</strong>: +234 803 081 0180</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section animated">
+            <div class="section-header">
+                <div class="section-number">11</div>
+                <h2>Appendices</h2>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-key"></i>
+                    <h3>11.1 Default Credentials</h3>
+                </div>
+                <div class="warning">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Security Notice</h4>
+                    <p><strong>Change passwords immediately after first login!</strong></p>
+                </div>
+                <table class="credentials-table">
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Super Admin</strong></td>
+                            <td>admin@medicare.com</td>
+                            <td>password</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Accountant</strong></td>
+                            <td>accountant1@gmail.com</td>
+                            <td>accountant123</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Doctor</strong></td>
+                            <td>nimat@gmail.com</td>
+                            <td>doctor123</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nurse</strong></td>
+                            <td>princess@gmail.com</td>
+                            <td>nurse123</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pharmacist</strong></td>
+                            <td>abeke@gmail.com</td>
+                            <td>pharmacist123</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-database"></i>
+                    <h3>11.2 Database Schema</h3>
+                </div>
+                <p>Full schema provided in <code>medicare_hms_db.txt</code> with 56 tables and 1,200+ columns. Key relationships:</p>
+                <ul>
+                    <li><code>users.role_id</code> → <code>user_roles.id</code></li>
+                    <li><code>bills.patient_id</code> → <code>patients.id</code></li>
+                    <li><code>ambulance_requests.ambulance_unit_id</code> → <code>ambulance_units.id</code></li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-book"></i>
+                    <h3>11.3 Glossary</h3>
+                </div>
+                <ul>
+                    <li><strong>GOPD</strong>: General Out-Patient Department</li>
+                    <li><strong>BLS</strong>: Basic Life Support (ambulance type)</li>
+                    <li><strong>HDU</strong>: High Dependency Unit (ward type)</li>
+                    <li><strong>PCI-DSS</strong>: Payment Card Industry Data Security Standard</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>Document Version</strong>: 1.0<br>
+            <strong>Last Updated</strong>: January 2026<br>
+            <strong>Prepared For</strong>: MediCare Hospital Administration Team</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Add animation delay for sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.content-section, .toc-container');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
+```
